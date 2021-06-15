@@ -1,0 +1,82 @@
+<button type="button" class="action" data-trigger="trigger">
+    <span data-bind="i18n: 'Open Modal'"></span>
+</button>
+<div data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal':{
+            'type': 'popup',
+            'title': 'Alert',
+            'trigger': '[data-trigger=trigger]',
+            'responsive': true,
+            'buttons': [{
+                class: 'action',
+                text: 'Ok'
+            }]
+        }}">
+    <div class="content">
+       
+    </div>
+</div>
+
+<button type="button" class="action" data-trigger="trigger2">
+    <span data-bind="i18n: 'Open Magento Login Modal'"></span>
+</button>
+<div data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal':{
+            'type': 'popup',
+            'title': 'Popup title',
+            'trigger': '[data-trigger=trigger2]',
+            'responsive': true,
+            'buttons': [{
+                class: 'action',
+                title: 'close'
+            }]
+        }}">
+    <div class="content">
+        Popup Contentq43
+    </div>
+</div>
+
+<button type="button" class="action" data-trigger="trigger3">
+    <span data-bind="i18n: 'Open Custom Login Modal'"></span>
+</button>
+<div data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal':{
+            'type': 'popup',
+            'title': 'Login Modal',
+            'trigger': '[data-trigger=trigger3]',
+            'responsive': true,
+            'buttons': [{
+                class: 'action',
+            }]
+        }}">
+        
+    <div class="content">
+        <div class="block block-customer-login">
+            <div class="block-content" aria-labelledby="block-customer-login-heading">
+                <form class="form form-login"
+                    action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>"
+                    method="post"
+                    id="login-form"
+                    data-mage-init='{"validation":{}}'>
+                    <?= $block->getBlockHtml('formkey') ?>
+                    <fieldset class="fieldset login" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
+                        <div class="field email required">
+                            <div class="control">
+                                <input name="login[username]" value="<?= $block->escapeHtmlAttr($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()) : ?> autocomplete="off"<?php endif; ?> id="email" type="email" class="input-text" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" data-mage-init='{"mage/trim-input":{}}' data-validate="{required:true, 'validate-email':true}">
+                            </div>
+                        </div>
+                        <div class="field password required">
+                            <div class="control">
+                                <input name="login[password]" type="password" <?php if ($block->isAutocompleteDisabled()) : ?> autocomplete="off"<?php endif; ?> class="input-text" id="pass" title="<?= $block->escapeHtmlAttr(__('Password')) ?>" data-validate="{required:true}">
+                            </div>
+                        </div>
+                        <?= $block->getChildHtml('form_additional_info') ?>
+                        <div class="actions-toolbar">
+                            <div class="primary"><button type="submit" class="action login primary" name="send" id="send2"><span><?= $block->escapeHtml(__('Sign In')) ?></span></button></div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
